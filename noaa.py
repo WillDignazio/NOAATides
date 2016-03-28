@@ -7,7 +7,23 @@ NOAA Tidal Data Retriever
 Usage: python noaa.py
 
 This program uses the exposed public API via noaa.gov to build a CSV file
-consisting of tidal data since January 1, 2000.
+consisting of tidal data since January 1, 2000 to the current date.
+
+The online NOAA api has a max retrieval period of approximately 1 day, thus
+we must iteratively retrieve the tidal through consecutive API calls. The
+API calls themselves are through HTTP requests to a specificied endpoint
+retrieved from the noaa.gov website. The enpoint URL is hardcoded below
+(as 'url') with substitution points for the desired date ranges.
+
+As a courtesy to the NOAA servers, we limit requests to 1 per second. This
+both prevents heavy load to the government run servers, and avoids blacklisting
+of the executing IP address, which with enough requests might look like a
+DOS attack.
+
+Output files are of the format: "tidal_data-${DATETIME}.csv"
+
+Every time the tool is run, a new file will be generated, as to not destroy
+previous runs that generated data csv files.
 
 """
 from datetime import timedelta, date
