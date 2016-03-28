@@ -1,0 +1,10 @@
+set term png size 2560,1440
+set output "plot.png"
+set xtics rotate
+set yrange[-2:5]
+set ytics nomirror
+set timefmt '%Y-%m-%d %H:%M'
+set xdata time
+set xrange ["2000-01-01 00:00" : "2016-03-14 00:00"]
+set datafile sep ","
+plot 'tidal_data-1457991517.54.csv' u 1:2 w p
