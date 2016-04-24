@@ -7,4 +7,19 @@ set timefmt '%Y-%m-%d %H:%M'
 set xdata time
 set xrange ["2000-01-01 00:00" : "2016-03-14 00:00"]
 set datafile sep ","
-plot 'tidal_data-1459179790.44.csv' u 1:2 w p
+set xlabel "Time"
+set ylabel "Height (Feet relative to MLLW)"
+plot 'tidal_data-1459179790.44.csv' u 1:2 w p notitle
+
+set term png size 2560,1440
+set output "snippet.png"
+set xtics rotate
+set yrange[-2:5]
+set ytics nomirror
+set timefmt '%Y-%m-%d %H:%M'
+set xdata time
+set xrange ["2000-01-01 00:00" : "2000-02-01 00:00"]
+set datafile sep ","
+set xlabel "Time"
+set ylabel "Height (Feet relative to MLLW)"
+plot 'tidal_snippet.csv' u 1:2 w p notitle

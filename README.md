@@ -13,4 +13,3 @@ The produced data will be created on disk as a file labeled ```tidal_data-<time>
 
    
    python ./noaa.py
-   
